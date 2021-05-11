@@ -15,11 +15,16 @@ app.use(express.urlencoded({ extended: true }))
 
 const port = 8081; // default port to listen
 
+const client_path = path.join(__dirname, "client");
+app.use(express.static(client_path));
+
+// serve client
+app.get("/", (req, res) =>{ res.sendFile(path.join(client_path, "index.html"));});
+
+
 const controller = new HomeController();
 
-// define routes
-app.get("/", (req, res) =>{ res.sendFile(path.join(__dirname, "client", "index.html"));})
-
+// api routes
 app.get("/api", controller.home);
 app.get("/api/props", controller.request_props);
 app.get("/api/:id", controller.try_echo);
