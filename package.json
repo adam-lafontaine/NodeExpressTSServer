@@ -1,5 +1,5 @@
 {
-  "main": "dist/index.js",
+  "main": "dist/server.js",
   "scripts": {
     "clean": "rimraf dist/*",
     "copy-assets": "ts-node tools/copyAssets",
